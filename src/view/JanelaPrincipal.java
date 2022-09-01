@@ -5,6 +5,9 @@
 package view;
 
 import controller.ClienteController;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Cliente;
 
 /**
  *
@@ -20,7 +23,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
     
     public void initView(){
-        //tabela.setJanelaView(this);
+        tabelaCliente.setJanelaView(this);
         java.awt.EventQueue.invokeLater(() ->  this.setVisible(true));
     }
 
@@ -34,80 +37,80 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        clientesTab = new javax.swing.JPanel();
         botoesCliente = new view.BotoesCliente();
-        tabelaClientes1 = new view.TabelaClientes();
-        formularioCliente1 = new view.FormularioCliente();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
+        formularioCliente = new view.FormularioCliente();
+        tabelaCliente = new view.TabelaCliente();
+        pedidosTab = new javax.swing.JPanel();
+        precosTab = new javax.swing.JPanel();
+        cardapioTab = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout clientesTabLayout = new javax.swing.GroupLayout(clientesTab);
+        clientesTab.setLayout(clientesTabLayout);
+        clientesTabLayout.setHorizontalGroup(
+            clientesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientesTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formularioCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tabelaClientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(botoesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(clientesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(formularioCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botoesCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tabelaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        clientesTabLayout.setVerticalGroup(
+            clientesTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(clientesTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(botoesCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(formularioCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tabelaClientes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(formularioCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tabelaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Clientes", jPanel1);
+        jTabbedPane1.addTab("Clientes", clientesTab);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+        javax.swing.GroupLayout pedidosTabLayout = new javax.swing.GroupLayout(pedidosTab);
+        pedidosTab.setLayout(pedidosTabLayout);
+        pedidosTabLayout.setHorizontalGroup(
+            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 746, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pedidosTabLayout.setVerticalGroup(
+            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 424, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Pedidos", jPanel2);
+        jTabbedPane1.addTab("Pedidos", pedidosTab);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+        javax.swing.GroupLayout precosTabLayout = new javax.swing.GroupLayout(precosTab);
+        precosTab.setLayout(precosTabLayout);
+        precosTabLayout.setHorizontalGroup(
+            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 746, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        precosTabLayout.setVerticalGroup(
+            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 424, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Preco", jPanel3);
+        jTabbedPane1.addTab("Preços", precosTab);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+        javax.swing.GroupLayout cardapioTabLayout = new javax.swing.GroupLayout(cardapioTab);
+        cardapioTab.setLayout(cardapioTabLayout);
+        cardapioTabLayout.setHorizontalGroup(
+            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 746, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        cardapioTabLayout.setVerticalGroup(
+            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 424, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Cardápio", jPanel4);
+        jTabbedPane1.addTab("Cardápio", cardapioTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,16 +129,65 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.BotoesCliente botoesCliente;
-    private view.FormularioCliente formularioCliente1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel cardapioTab;
+    private javax.swing.JPanel clientesTab;
+    private view.FormularioCliente formularioCliente;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private view.TabelaClientes tabelaClientes1;
+    private javax.swing.JPanel pedidosTab;
+    private javax.swing.JPanel precosTab;
+    private view.TabelaCliente tabelaCliente;
     // End of variables declaration//GEN-END:variables
 
     public void setController(ClienteController controller) {
         botoesCliente.setController(controller);  
+    }
+    
+    //retorna o cliente caso formulario da aba clientes totalmente preenchido ou nulo se faltar algum campo
+    public Cliente getClienteFormulario(){
+        return formularioCliente.getFormularioPreenchido();
+    }
+    
+    //insere a linha na tabela
+    public void adicionaClienteTabela(Cliente cliente){
+        tabelaCliente.adicionaCliente(cliente);
+    }
+    
+    public void listaClientesTabela(List<Cliente> clientes){
+        tabelaCliente.setListaClientesTabela(clientes);
+    }
+    
+    //retorna o clinte ja atualizado para salvar
+    public Cliente getClienteParaAtualizar() {
+        return formularioCliente.getClienteParaAtualizar();
+    }
+    
+    public List<Cliente> getContatosParaExcluir(){
+        return tabelaCliente.getContatosParaExcluirDaTabela();
+    }
+    
+    public void excluirContatosTabela(List<Cliente> clientes){
+        tabelaCliente.excluirContatosDaTabela(clientes);
+    }
+    
+    //4 abaixo: retornam os panels da jenela principal
+    public BotoesCliente getBotoesCliente() {
+        return botoesCliente;
+    }
+
+    public FormularioCliente getFormularioCliente() {
+        return formularioCliente;
+    }
+
+    public TabelaCliente getTabelaCliente() {
+        return tabelaCliente;
+    }
+    
+    //2 abaixo: modais
+    public void apresentaInfo(String info) {
+        JOptionPane.showMessageDialog(null,info + "\n", "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void apresentaErro(String erro) {
+        JOptionPane.showMessageDialog(null,erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }

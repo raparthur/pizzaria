@@ -91,6 +91,10 @@ public class BotoesCliente extends javax.swing.JPanel {
 
     void setController(ClienteController controller) {
         this.inserirClienteBtn.addActionListener(e -> controller.inserirCliente());
+        this.atualizarClienteBtn.addActionListener(e -> controller.atualizarCliente());
+        this.listarClientesBtn.addActionListener(e -> controller.listarTodosClientes());
+        this.excluirClienteBtn.addActionListener(e -> controller.excluirClientes());
+        this.pesquisarClientesBtn.addActionListener(e -> controller.pesquisarClientes(pesquisarClientesTxt.getText()));
     }
 
 }

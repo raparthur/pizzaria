@@ -4,11 +4,15 @@
  */
 package view;
 
+import model.Cliente;
+
 /**
  *
  * @author Raparthur
  */
 public class FormularioCliente extends javax.swing.JPanel {
+    
+    private Cliente clienteSelecionadoParaAtualizacao;
 
     /**
      * Creates new form FormularioCliente
@@ -86,4 +90,41 @@ public class FormularioCliente extends javax.swing.JPanel {
     private javax.swing.JTextField sobrenomeCliente;
     private javax.swing.JTextField telCliente;
     // End of variables declaration//GEN-END:variables
+
+
+    Cliente getFormularioPreenchido(){
+        String nome = nomeClienteTxt.getText();
+        String sobrenome = sobrenomeCliente.getText();
+        String tel = telCliente.getText();
+        
+        
+        if(nome.isBlank() || sobrenome.isBlank() || tel.isBlank()){
+            return null;
+        }
+        
+        Cliente c = new Cliente();
+        c.setId(0);
+        c.setNome(nome);
+        c.setSobrenome(sobrenome);
+        c.setTel(tel);
+        return c;
+    }
+    
+    public void setClienteParaPreencher(Cliente cliente) {
+        this.clienteSelecionadoParaAtualizacao = cliente;
+        nomeClienteTxt.setText(cliente.getNome());
+        sobrenomeCliente.setText(cliente.getSobrenome());
+        telCliente.setText(cliente.getTel()); 
+    }
+
+    public Cliente getClienteParaAtualizar() {
+        if(this.clienteSelecionadoParaAtualizacao==null){
+            return null;
+        }
+        this.clienteSelecionadoParaAtualizacao.setNome(nomeClienteTxt.getText());
+        this.clienteSelecionadoParaAtualizacao.setSobrenome(sobrenomeCliente.getText());
+        this.clienteSelecionadoParaAtualizacao.setTel(telCliente.getText());
+        return this.clienteSelecionadoParaAtualizacao;
+                
+    }
 }

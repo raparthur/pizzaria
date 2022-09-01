@@ -107,7 +107,7 @@ public class ClienteTableModel extends AbstractTableModel{
         this.fireTableRowsDeleted(0,indice);//update JTable
     }
 
-    public Cliente getClientes(int linha){
+    public Cliente getCliente(int linha){
         return lista.get(linha);
     }
 
