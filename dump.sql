@@ -16,8 +16,7 @@ engine InnoDB;
 
 create table forma(
 id int primary key auto_increment,
-min_dim smallint,
-max_dim smallint)
+nome varchar(20))
 engine InnoDB;
 
 create table pedido(
