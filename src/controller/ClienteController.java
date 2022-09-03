@@ -24,7 +24,6 @@ public class ClienteController {
     
     private void initController(){
         this.view.setController(this);
-        this.view.initView();
     }
     
     public void inserirCliente(){

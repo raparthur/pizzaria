@@ -5,8 +5,12 @@
 package view;
 
 import controller.ClienteController;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import model.Cliente;
 
 /**
@@ -21,10 +25,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public JanelaPrincipal() {
         initComponents();
     }
-    
-    public void initView(){
+
+    public void initView() {
         tabelaCliente.setJanelaView(this);
-        java.awt.EventQueue.invokeLater(() ->  this.setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> this.setVisible(true));
+        
+        //click event to detect tab change
+        jTabbedPane1.addChangeListener(new ChangeListener() {
+            
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            System.out.println("Tab: " + jTabbedPane1.getSelectedIndex());
+        }
+
+    });
     }
 
     /**
@@ -41,9 +55,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         botoesCliente = new view.BotoesCliente();
         formularioCliente = new view.FormularioCliente();
         tabelaCliente = new view.TabelaCliente();
-        pedidosTab = new javax.swing.JPanel();
-        precosTab = new javax.swing.JPanel();
         cardapioTab = new javax.swing.JPanel();
+        formularioSabores1 = new view.FormularioSabores();
+        formularioTiposPizza1 = new view.FormularioTiposPizza();
+        precosTab = new javax.swing.JPanel();
+        pedidosTab = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,18 +89,29 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clientes", clientesTab);
 
-        javax.swing.GroupLayout pedidosTabLayout = new javax.swing.GroupLayout(pedidosTab);
-        pedidosTab.setLayout(pedidosTabLayout);
-        pedidosTabLayout.setHorizontalGroup(
-            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+        javax.swing.GroupLayout cardapioTabLayout = new javax.swing.GroupLayout(cardapioTab);
+        cardapioTab.setLayout(cardapioTabLayout);
+        cardapioTabLayout.setHorizontalGroup(
+            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardapioTabLayout.createSequentialGroup()
+                .addContainerGap(8, Short.MAX_VALUE)
+                .addComponent(formularioSabores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardapioTabLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(formularioTiposPizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        pedidosTabLayout.setVerticalGroup(
-            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+        cardapioTabLayout.setVerticalGroup(
+            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardapioTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(formularioTiposPizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(formularioSabores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Pedidos", pedidosTab);
+        jTabbedPane1.addTab("Cardápio", cardapioTab);
 
         javax.swing.GroupLayout precosTabLayout = new javax.swing.GroupLayout(precosTab);
         precosTab.setLayout(precosTabLayout);
@@ -99,18 +126,18 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Preços", precosTab);
 
-        javax.swing.GroupLayout cardapioTabLayout = new javax.swing.GroupLayout(cardapioTab);
-        cardapioTab.setLayout(cardapioTabLayout);
-        cardapioTabLayout.setHorizontalGroup(
-            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pedidosTabLayout = new javax.swing.GroupLayout(pedidosTab);
+        pedidosTab.setLayout(pedidosTabLayout);
+        pedidosTabLayout.setHorizontalGroup(
+            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 746, Short.MAX_VALUE)
         );
-        cardapioTabLayout.setVerticalGroup(
-            cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pedidosTabLayout.setVerticalGroup(
+            pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 424, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Cardápio", cardapioTab);
+        jTabbedPane1.addTab("Pedidos", pedidosTab);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +159,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel cardapioTab;
     private javax.swing.JPanel clientesTab;
     private view.FormularioCliente formularioCliente;
+    private view.FormularioSabores formularioSabores1;
+    private view.FormularioTiposPizza formularioTiposPizza1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pedidosTab;
     private javax.swing.JPanel precosTab;
@@ -139,36 +168,36 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void setController(ClienteController controller) {
-        botoesCliente.setController(controller);  
+        botoesCliente.setController(controller);
     }
-    
+
     //retorna o cliente caso formulario da aba clientes totalmente preenchido ou nulo se faltar algum campo
-    public Cliente getClienteFormulario(){
+    public Cliente getClienteFormulario() {
         return formularioCliente.getFormularioPreenchido();
     }
-    
+
     //insere a linha na tabela
-    public void adicionaClienteTabela(Cliente cliente){
+    public void adicionaClienteTabela(Cliente cliente) {
         tabelaCliente.adicionaCliente(cliente);
     }
-    
-    public void listaClientesTabela(List<Cliente> clientes){
+
+    public void listaClientesTabela(List<Cliente> clientes) {
         tabelaCliente.setListaClientesTabela(clientes);
     }
-    
+
     //retorna o clinte ja atualizado para salvar
     public Cliente getClienteParaAtualizar() {
         return formularioCliente.getClienteParaAtualizar();
     }
-    
-    public List<Cliente> getContatosParaExcluir(){
+
+    public List<Cliente> getContatosParaExcluir() {
         return tabelaCliente.getContatosParaExcluirDaTabela();
     }
-    
-    public void excluirContatosTabela(List<Cliente> clientes){
+
+    public void excluirContatosTabela(List<Cliente> clientes) {
         tabelaCliente.excluirContatosDaTabela(clientes);
     }
-    
+
     //4 abaixo: retornam os panels da jenela principal
     public BotoesCliente getBotoesCliente() {
         return botoesCliente;
@@ -181,13 +210,15 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public TabelaCliente getTabelaCliente() {
         return tabelaCliente;
     }
-    
+
     //2 abaixo: modais
     public void apresentaInfo(String info) {
-        JOptionPane.showMessageDialog(null,info + "\n", "Informação", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, info + "\n", "Informação", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void apresentaErro(String erro) {
+        JOptionPane.showMessageDialog(null, erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
     }
     
-    public void apresentaErro(String erro) {
-        JOptionPane.showMessageDialog(null,erro + "\n", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
+
 }

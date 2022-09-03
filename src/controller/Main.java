@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args){
         JanelaPrincipal view = new JanelaPrincipal();
         ClienteController controller = new ClienteController(view);
+        view.initView();
         
     }
     
