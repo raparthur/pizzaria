@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import model.Cliente;
+import model.Sabor;
+import model.TipoPizza;
 
 /**
  *
@@ -100,13 +102,13 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         cardapioTab.setLayout(cardapioTabLayout);
         cardapioTabLayout.setHorizontalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cardapioTabLayout.createSequentialGroup()
-                .addContainerGap(8, Short.MAX_VALUE)
-                .addComponent(formularioSabores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardapioTabLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 9, Short.MAX_VALUE)
                 .addComponent(formularioTiposPizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardapioTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(formularioSabores1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         cardapioTabLayout.setVerticalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,8 +215,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
     
     //===========================CARDAPIO========================
-    public void carregaCardapio(){
-        //formularioSabores1.
+    public void carregaCardapio(List<Sabor> sabores,List<TipoPizza> tipos){
+        formularioSabores1.setSaboresList(sabores);
+        formularioTiposPizza1.setTiposPizzaList(tipos);
     }
 
     //4 abaixo: retornam os panels da jenela principal

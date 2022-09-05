@@ -49,7 +49,7 @@ public class FormularioSabores extends javax.swing.JPanel {
         atualizarSaborBtn = new javax.swing.JButton();
         excluirSaborBtn = new javax.swing.JButton();
 
-        jLabel1.setText("sabor");
+        jLabel1.setText("selecione sabor para atualizar");
 
         jLabel2.setText("nome");
 

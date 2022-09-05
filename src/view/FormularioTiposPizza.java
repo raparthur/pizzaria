@@ -41,7 +41,7 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
         inserirTipoPizzaBtn = new javax.swing.JButton();
         removerTipoPizzaBtn = new javax.swing.JButton();
 
-        jLabel1.setText("selecione tipo");
+        jLabel1.setText("selecione tipo para atualizar");
 
         jLabel2.setText("nome");
 

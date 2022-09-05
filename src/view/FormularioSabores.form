@@ -81,7 +81,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="sabor"/>
+        <Property name="text" type="java.lang.String" value="selecione sabor para atualizar"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nomeSaborTxt">
