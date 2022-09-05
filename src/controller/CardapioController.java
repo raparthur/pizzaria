@@ -17,6 +17,7 @@ import view.JanelaPrincipal;
 public class CardapioController {
     
     private JanelaPrincipal view;
+    //incluir variavel dao
     
     public CardapioController(JanelaPrincipal view){ //passado apenas a view, paasar tambem dao no construtor
        this.view = view;
@@ -55,8 +56,60 @@ public class CardapioController {
         s3.setTipo(t2);
         sabores.add(s3);
         
-        view.carregaCardapio(sabores, tipos);
+        view.carregaTiposPizza(tipos);
+        view.carregaSabores(sabores);
     }
     
+    public void atualizarTipoPizza(){
+        //pega o obj pronto para atualizar
+        TipoPizza tipo = view.getTipoParaAtualizar();
+        if(tipo == null){
+            view.apresentaInfo("algum campo faltando ou deu merda ao converter o preço por area para double");
+        } else {
+            System.out.println("id:"+tipo.getId()+" nome: "+tipo.getNome());
+            //atualizar via dao. talvez seria interessante fazer uma logica 
+            //para nao deixar atualizar com algum nome ja existente na dao. utilizar view.apresentaErro("nome duplicado");
+      
+        }
+    }
+    
+    public void inserirTipoPizza(){
+        //pega o obj pronto para inserir, mas com id=0 por padrao, já que é novo
+        TipoPizza tipo = view.getTipoParaInserir();
+        if(tipo == null){
+            view.apresentaInfo("algum campo faltando ou deu merda ao converter o preço por area para double");
+        } else {
+            System.out.println("id:"+tipo.getId()+" nome: "+tipo.getNome());
+            //inserir via dao. talvez seria interessante fazer uma logica 
+            //para nao deixar inserir com algum nome ja existente na dao. utilizar view.apresentaErro("nome duplicado");
+        
+        }
+    }
+    
+    public void atualizarSabor(){
+        //pega o obj pronto para atualizar
+        Sabor sabor = view.getSaborParaAtualizar();
+        if(sabor == null){
+            view.apresentaInfo("algum campo faltando");
+        } else {
+            System.out.println("id:"+sabor.getId()+" nome: "+sabor.getNome()+" tipo: "+sabor.getTipo().getNome());
+            //atualizar via dao. talvez seria interessante fazer uma logica 
+            //para nao deixar atualizar com algum nome ja existente na dao. utilizar view.apresentaErro("nome duplicado");
+      
+        }
+    }
+    
+    public void inserirSabor(){
+        //pega o obj pronto para inserir, mas com id=0 por padrao, já que é novo
+        Sabor sabor = view.getSaborParaInserir();
+        if(sabor == null){
+            view.apresentaInfo("algum campo faltando");
+        } else {
+            System.out.println("id:"+sabor.getId()+" nome: "+sabor.getNome()+" tipo: "+sabor.getTipo().getNome());
+            //inserir via dao. talvez seria interessante fazer uma logica 
+            //para nao deixar inserir com algum nome ja existente na dao. utilizar view.apresentaErro("nome duplicado");
+           
+        }
+    }
     
 }

@@ -65,8 +65,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         formularioCliente = new view.FormularioCliente();
         tabelaCliente = new view.TabelaCliente();
         cardapioTab = new javax.swing.JPanel();
-        formularioSabores1 = new view.FormularioSabores();
-        formularioTiposPizza1 = new view.FormularioTiposPizza();
+        formularioTiposPizza = new view.FormularioTiposPizza();
+        formularioSabores = new view.FormularioSabores();
         precosTab = new javax.swing.JPanel();
         pedidosTab = new javax.swing.JPanel();
 
@@ -102,21 +102,20 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         cardapioTab.setLayout(cardapioTabLayout);
         cardapioTabLayout.setHorizontalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardapioTabLayout.createSequentialGroup()
-                .addGap(0, 9, Short.MAX_VALUE)
-                .addComponent(formularioTiposPizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cardapioTabLayout.createSequentialGroup()
+            .addGroup(cardapioTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(formularioSabores1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(formularioTiposPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(formularioSabores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         cardapioTabLayout.setVerticalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardapioTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(formularioTiposPizza1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(formularioTiposPizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(formularioSabores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(formularioSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
@@ -126,7 +125,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         precosTab.setLayout(precosTabLayout);
         precosTabLayout.setHorizontalGroup(
             precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
         );
         precosTabLayout.setVerticalGroup(
             precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,7 +138,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         pedidosTab.setLayout(pedidosTabLayout);
         pedidosTabLayout.setHorizontalGroup(
             pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 746, Short.MAX_VALUE)
+            .addGap(0, 749, Short.MAX_VALUE)
         );
         pedidosTabLayout.setVerticalGroup(
             pedidosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,8 +167,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel cardapioTab;
     private javax.swing.JPanel clientesTab;
     private view.FormularioCliente formularioCliente;
-    private view.FormularioSabores formularioSabores1;
-    private view.FormularioTiposPizza formularioTiposPizza1;
+    private view.FormularioSabores formularioSabores;
+    private view.FormularioTiposPizza formularioTiposPizza;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pedidosTab;
     private javax.swing.JPanel precosTab;
@@ -182,8 +181,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
     //aba cardapio
     public void setController(CardapioController controller) {
-       formularioTiposPizza1.setController(controller);
-       formularioTiposPizza1.setController(controller);
+       formularioTiposPizza.setController(controller);
+       formularioSabores.setController(controller);
     }
 
     //===========================CLIENTES========================
@@ -215,11 +214,33 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     }
     
     //===========================CARDAPIO========================
-    public void carregaCardapio(List<Sabor> sabores,List<TipoPizza> tipos){
-        formularioSabores1.setSaboresList(sabores);
-        formularioTiposPizza1.setTiposPizzaList(tipos);
+    public void carregaTiposPizza(List<TipoPizza> tipos){
+        formularioSabores.setTiposPizzaList(tipos);
+        formularioTiposPizza.setTiposPizzaList(tipos);
+    }
+    
+    public void carregaSabores(List<Sabor> sabores){
+        formularioSabores.setSaboresList(sabores);
     }
 
+    public TipoPizza getTipoParaAtualizar(){
+        return formularioTiposPizza.getTipoPizzaFormularioParaAtualizar();
+    }
+    
+    public TipoPizza getTipoParaInserir(){
+        return formularioTiposPizza.getTipoPizzaFormularioParaInserir();
+    }
+    
+    public Sabor getSaborParaAtualizar(){
+        return formularioSabores.getSaborFormularioParaAtualizar();
+    }
+    
+    public Sabor getSaborParaInserir(){
+        return formularioSabores.getSaborFormularioParaInserir();
+    }
+    
+    //=============================================================
+    
     //4 abaixo: retornam os panels da jenela principal
     public BotoesCliente getBotoesCliente() {
         return botoesCliente;

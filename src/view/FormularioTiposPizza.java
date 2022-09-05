@@ -5,6 +5,8 @@
 package view;
 
 import controller.CardapioController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import model.TipoPizza;
@@ -20,6 +22,22 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
      */
     public FormularioTiposPizza() {
         initComponents();
+        //nao da para atualizar ainda se nao selecionar um tipo antes
+        atualizarTipoPizzaBtn.setEnabled(false);
+
+        //preencher campos ao pressionar ok
+        okSelecTipoBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < tiposPizza.size(); i++) {
+                    if (tipoPizzaCbbox.getSelectedIndex() == i) {
+                        nomeTipoPizzaTxt.setText(tiposPizza.get(i).getNome());
+                        precoTipoPizzaTxt.setText(String.valueOf(tiposPizza.get(i).getPrecoUnidArea()));
+                    }
+                }
+                atualizarTipoPizzaBtn.setEnabled(true);
+            }
+        });
     }
 
     /**
@@ -39,7 +57,7 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         atualizarTipoPizzaBtn = new javax.swing.JButton();
         inserirTipoPizzaBtn = new javax.swing.JButton();
-        removerTipoPizzaBtn = new javax.swing.JButton();
+        okSelecTipoBtn = new javax.swing.JButton();
 
         jLabel1.setText("selecione tipo para atualizar");
 
@@ -51,7 +69,7 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
 
         inserirTipoPizzaBtn.setText("inserir");
 
-        removerTipoPizzaBtn.setText("remover");
+        okSelecTipoBtn.setText("ok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,23 +78,26 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tipoPizzaCbbox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(okSelecTipoBtn))
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(nomeTipoPizzaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 438, Short.MAX_VALUE))
+                            .addComponent(nomeTipoPizzaTxt))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(precoTipoPizzaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(inserirTipoPizzaBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(atualizarTipoPizzaBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(removerTipoPizzaBtn))))
-                    .addComponent(tipoPizzaCbbox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(atualizarTipoPizzaBtn))
+                            .addComponent(jLabel3))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -85,7 +106,9 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoPizzaCbbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tipoPizzaCbbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(okSelecTipoBtn))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -95,8 +118,7 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
                     .addComponent(nomeTipoPizzaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(precoTipoPizzaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(atualizarTipoPizzaBtn)
-                    .addComponent(inserirTipoPizzaBtn)
-                    .addComponent(removerTipoPizzaBtn))
+                    .addComponent(inserirTipoPizzaBtn))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -109,36 +131,82 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField nomeTipoPizzaTxt;
+    private javax.swing.JButton okSelecTipoBtn;
     private javax.swing.JTextField precoTipoPizzaTxt;
-    private javax.swing.JButton removerTipoPizzaBtn;
     private javax.swing.JComboBox<String> tipoPizzaCbbox;
     // End of variables declaration//GEN-END:variables
 
     private List<TipoPizza> tiposPizza = new ArrayList<>(); //var auxiliar para representar os itens tipos de pizza do combobox como objeto
-    
-    public void setController(CardapioController controller){
-        
+
+    public void setController(CardapioController controller) {
+        inserirTipoPizzaBtn.addActionListener(e -> controller.inserirTipoPizza());
+        atualizarTipoPizzaBtn.addActionListener(e -> controller.atualizarTipoPizza());
     }
-    
+
+    public TipoPizza getTipoPizzaFormularioParaInserir() {
+        String nome = nomeTipoPizzaTxt.getText();
+        String preco = precoTipoPizzaTxt.getText();
+        if (nome.isBlank() || preco.isBlank()) {
+            return null;
+        }
+        TipoPizza tipo = new TipoPizza();
+        tipo.setId(0);
+        tipo.setNome(nome);
+        tipo.setPrecoUnidArea(Double.parseDouble(preco));
+        tiposPizza.add(tipo);
+        tipoPizzaCbbox.addItem(tipo.getNome());
+        nomeTipoPizzaTxt.setText("");
+        precoTipoPizzaTxt.setText("");
+        return tipo;
+    }
+
+    public TipoPizza getTipoPizzaFormularioParaAtualizar() {
+        String nome = nomeTipoPizzaTxt.getText();
+        String preco = precoTipoPizzaTxt.getText();
+        if (nome.isBlank() || preco.isBlank()) {
+            return null;
+        }
+
+        for (int i = 0; i < tiposPizza.size(); i++) {
+            if (tipoPizzaCbbox.getSelectedIndex() == i) {
+                TipoPizza tipo = tiposPizza.get(i);
+                tipo.setNome(nome);
+                try {
+                    tipo.setPrecoUnidArea(Double.parseDouble(preco));
+                } catch (Exception e) {
+                    return null;
+                }
+                //atualizar lista e combobox
+                tiposPizza.set(i, tipo);
+                tipoPizzaCbbox.removeAllItems();
+                for (TipoPizza t : tiposPizza) {
+                    tipoPizzaCbbox.addItem(t.getNome());
+                }
+                return tipo;
+            }
+        }
+        return null;
+    }
+
     //alimenta a lista de tipos de pizza disponiveis na variavel global auxiliar e combobox
-    public void setTiposPizzaList(List<TipoPizza> tipos){
+    public void setTiposPizzaList(List<TipoPizza> tipos) {
         tiposPizza = tipos;
         tipoPizzaCbbox.removeAllItems();
-        for(TipoPizza tipo:tipos){
+        for (TipoPizza tipo : tipos) {
             tipoPizzaCbbox.addItem(tipo.getNome());
         }
     }
-    
+
     //retorna toda a lista de tipos de pizza do combobox
-    public List<TipoPizza> getTiposPizzaList(){
+    public List<TipoPizza> getTiposPizzaList() {
         return tiposPizza;
     }
-    
+
     //remove o tipo de pizza do combobox
-    public TipoPizza removeTipoPizzaCbbox(int id){
-        for(TipoPizza tipo:tiposPizza){
+    public TipoPizza removeTipoPizzaCbbox(int id) {
+        for (TipoPizza tipo : tiposPizza) {
             int index = 0;
-            if(tipo.getId() == id){
+            if (tipo.getId() == id) {
                 tipoPizzaCbbox.remove(index);
                 return tipo;
             }
@@ -146,36 +214,36 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
         }
         return null;
     }
-    
+
     //add o tipo de pizza no combobox
-    public void addTipoPizzaCbbox(TipoPizza tipo){
+    public void addTipoPizzaCbbox(TipoPizza tipo) {
         tiposPizza.add(tipo);
         tipoPizzaCbbox.addItem(tipo.getNome());
     }
 
     //retorna os campos preenchidos na forma de objeto
-    public TipoPizza getTipoPizzaFormulario(){
+    public TipoPizza getTipoPizzaFormulario() {
         String nome = nomeTipoPizzaTxt.getText();
         String precoStr = precoTipoPizzaTxt.getText();
-        
-        if(nome.isBlank() || precoStr.isBlank()){
+
+        if (nome.isBlank() || precoStr.isBlank()) {
             return null;
         }
-        
-        try{
+
+        try {
             double preco = Double.parseDouble(precoStr);
             TipoPizza tipo = new TipoPizza();
             tipo.setId(0);
             tipo.setNome(nome);
             tipo.setPrecoUnidArea(preco);
             return tipo;
-        } catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    
+
     //preenche os campos a partir do objeto
-    public void setTipoPizzaPreencher(TipoPizza tipo){
+    public void setTipoPizzaPreencher(TipoPizza tipo) {
         nomeTipoPizzaTxt.setText(tipo.getNome());
         precoTipoPizzaTxt.setText(String.valueOf(tipo.getPrecoUnidArea()));
     }
