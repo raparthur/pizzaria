@@ -6,6 +6,7 @@ package view;
 
 import controller.CardapioController;
 import controller.ClienteController;
+import controller.PrecosController;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
@@ -43,6 +44,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             System.out.println("Tab: " + jTabbedPane1.getSelectedIndex());
             
             if(jTabbedPane1.getSelectedIndex() == 1){
+                PrecosController controller = new PrecosController(janela);
+            } else
+            
+            if(jTabbedPane1.getSelectedIndex() == 2){
                 CardapioController controller = new CardapioController(janela);
             }
         }
@@ -64,10 +69,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         botoesCliente = new view.BotoesCliente();
         formularioCliente = new view.FormularioCliente();
         tabelaCliente = new view.TabelaCliente();
-        cardapioTab = new javax.swing.JPanel();
-        formularioTiposPizza = new view.FormularioTiposPizza();
-        formularioSabores = new view.FormularioSabores();
         precosTab = new javax.swing.JPanel();
+        formularioTiposPizza = new view.FormularioTiposPizza();
+        cardapioTab = new javax.swing.JPanel();
+        formularioSabores = new view.FormularioSabores();
         pedidosTab = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,41 +103,43 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clientes", clientesTab);
 
+        javax.swing.GroupLayout precosTabLayout = new javax.swing.GroupLayout(precosTab);
+        precosTab.setLayout(precosTabLayout);
+        precosTabLayout.setHorizontalGroup(
+            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(precosTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(formularioTiposPizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        precosTabLayout.setVerticalGroup(
+            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(precosTabLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(formularioTiposPizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(289, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Preços", precosTab);
+
         javax.swing.GroupLayout cardapioTabLayout = new javax.swing.GroupLayout(cardapioTab);
         cardapioTab.setLayout(cardapioTabLayout);
         cardapioTabLayout.setHorizontalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardapioTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(formularioTiposPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(formularioSabores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(formularioSabores, javax.swing.GroupLayout.DEFAULT_SIZE, 737, Short.MAX_VALUE)
                 .addContainerGap())
         );
         cardapioTabLayout.setVerticalGroup(
             cardapioTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cardapioTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(formularioTiposPizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(formularioSabores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cardápio", cardapioTab);
-
-        javax.swing.GroupLayout precosTabLayout = new javax.swing.GroupLayout(precosTab);
-        precosTab.setLayout(precosTabLayout);
-        precosTabLayout.setHorizontalGroup(
-            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
-        );
-        precosTabLayout.setVerticalGroup(
-            precosTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Preços", precosTab);
 
         javax.swing.GroupLayout pedidosTabLayout = new javax.swing.GroupLayout(pedidosTab);
         pedidosTab.setLayout(pedidosTabLayout);
@@ -179,9 +186,14 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     public void setController(ClienteController controller) {
         botoesCliente.setController(controller);
     }
+    
+    //aba precos
+    public void setController(PrecosController controller) {
+       formularioTiposPizza.setController(controller);
+    }
+    
     //aba cardapio
     public void setController(CardapioController controller) {
-       formularioTiposPizza.setController(controller);
        formularioSabores.setController(controller);
     }
 

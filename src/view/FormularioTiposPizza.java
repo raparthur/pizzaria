@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.CardapioController;
+import controller.PrecosController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -138,7 +138,7 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
 
     private List<TipoPizza> tiposPizza = new ArrayList<>(); //var auxiliar para representar os itens tipos de pizza do combobox como objeto
 
-    public void setController(CardapioController controller) {
+    public void setController(PrecosController controller) {
         inserirTipoPizzaBtn.addActionListener(e -> controller.inserirTipoPizza());
         atualizarTipoPizzaBtn.addActionListener(e -> controller.atualizarTipoPizza());
     }
@@ -153,8 +153,6 @@ public class FormularioTiposPizza extends javax.swing.JPanel {
         tipo.setId(0);
         tipo.setNome(nome);
         tipo.setPrecoUnidArea(Double.parseDouble(preco));
-        tiposPizza.add(tipo);
-        tipoPizzaCbbox.addItem(tipo.getNome());
         nomeTipoPizzaTxt.setText("");
         precoTipoPizzaTxt.setText("");
         return tipo;

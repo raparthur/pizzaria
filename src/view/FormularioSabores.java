@@ -70,9 +70,6 @@ public class FormularioSabores extends javax.swing.JPanel {
                 sabor.setId(0);
                 sabor.setNome(nome);
                 sabor.setTipo(tiposPizzaList.get(i));
-                //add lista e combobox
-                saboresList.add(sabor);
-                saborCbbox.addItem(sabor.getNome());
                 nomeSaborTxt.setText("");
                 saborCbbox.setSelectedIndex(0);
                 return sabor;
