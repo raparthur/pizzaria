@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.CardapioController;
 import controller.ClienteController;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,11 +20,13 @@ import model.Cliente;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 
+    private JanelaPrincipal janela;
     /**
      * Creates new form JanelaPrincipal
      */
     public JanelaPrincipal() {
         initComponents();
+        janela = this;
     }
 
     public void initView() {
@@ -36,6 +39,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         @Override
         public void stateChanged(ChangeEvent e) {
             System.out.println("Tab: " + jTabbedPane1.getSelectedIndex());
+            
+            if(jTabbedPane1.getSelectedIndex() == 1){
+                CardapioController controller = new CardapioController(janela);
+            }
         }
 
     });
@@ -167,10 +174,17 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private view.TabelaCliente tabelaCliente;
     // End of variables declaration//GEN-END:variables
 
+    //aba clientes
     public void setController(ClienteController controller) {
         botoesCliente.setController(controller);
     }
+    //aba cardapio
+    public void setController(CardapioController controller) {
+       formularioTiposPizza1.setController(controller);
+       formularioTiposPizza1.setController(controller);
+    }
 
+    //===========================CLIENTES========================
     //retorna o cliente caso formulario da aba clientes totalmente preenchido ou nulo se faltar algum campo
     public Cliente getClienteFormulario() {
         return formularioCliente.getFormularioPreenchido();
@@ -196,6 +210,11 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
     public void excluirContatosTabela(List<Cliente> clientes) {
         tabelaCliente.excluirContatosDaTabela(clientes);
+    }
+    
+    //===========================CARDAPIO========================
+    public void carregaCardapio(){
+        //formularioSabores1.
     }
 
     //4 abaixo: retornam os panels da jenela principal

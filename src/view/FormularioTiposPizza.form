@@ -19,26 +19,27 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tipoPizzaCbbox" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="436" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="nomeTipoPizzaTxt" max="32767" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Component id="nomeTipoPizzaTxt" min="-2" pref="401" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="precoTipoPizzaTxt" min="-2" pref="152" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cadastrarTipoPizzaBtn" min="-2" max="-2" attributes="0"/>
-                          </Group>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="precoTipoPizzaTxt" min="-2" pref="114" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="inserirTipoPizzaBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="atualizarTipoPizzaBtn" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="removerTipoPizzaBtn" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
+                  <Component id="tipoPizzaCbbox" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -60,7 +61,9 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nomeTipoPizzaTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="precoTipoPizzaTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cadastrarTipoPizzaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="atualizarTipoPizzaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="inserirTipoPizzaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="removerTipoPizzaBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="16" max="32767" attributes="0"/>
           </Group>
@@ -71,12 +74,7 @@
     <Component class="javax.swing.JComboBox" name="tipoPizzaCbbox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -102,9 +100,19 @@
         <Property name="text" type="java.lang.String" value="pre&#xe7;o cm2"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cadastrarTipoPizzaBtn">
+    <Component class="javax.swing.JButton" name="atualizarTipoPizzaBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="cadastrar"/>
+        <Property name="text" type="java.lang.String" value="atualizar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="inserirTipoPizzaBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="inserir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="removerTipoPizzaBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="remover"/>
       </Properties>
     </Component>
   </SubComponents>

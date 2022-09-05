@@ -4,17 +4,30 @@
  */
 package view;
 
+import controller.CardapioController;
+import java.util.ArrayList;
+import java.util.List;
+import model.Sabor;
+import model.TipoPizza;
+
 /**
  *
  * @author Raparthur
  */
 public class FormularioSabores extends javax.swing.JPanel {
 
+    private List<Sabor> saboresList = new ArrayList<>(); //var auxiliar para representar os itens sabor de pizza do combobox como objeto
+    private List<TipoPizza> tiposPizzaList = new ArrayList<>(); //var auxiliar para representar os itens tipos de pizza do combobox como objeto
+    
     /**
      * Creates new form FormularioSabores
      */
     public FormularioSabores() {
         initComponents();
+    }
+    
+    public void setController(CardapioController controller){
+        
     }
 
     /**
@@ -32,19 +45,21 @@ public class FormularioSabores extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         tipoPizzaSaborCbbox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-
-        saborCbbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        inserirSaborBtn = new javax.swing.JButton();
+        atualizarSaborBtn = new javax.swing.JButton();
+        excluirSaborBtn = new javax.swing.JButton();
 
         jLabel1.setText("sabor");
 
         jLabel2.setText("nome");
 
-        tipoPizzaSaborCbbox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel3.setText("tipo");
 
-        jButton1.setText("cadastrar");
+        inserirSaborBtn.setText("Inserir");
+
+        atualizarSaborBtn.setText("Atualizar");
+
+        excluirSaborBtn.setText("Excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -53,24 +68,23 @@ public class FormularioSabores extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nomeSaborTxt)
-                        .addContainerGap())
+                    .addComponent(nomeSaborTxt)
+                    .addComponent(saborCbbox, 0, 720, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(saborCbbox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tipoPizzaSaborCbbox, 0, 630, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)
-                        .addGap(14, 14, 14))))
+                        .addComponent(tipoPizzaSaborCbbox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(inserirSaborBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(atualizarSaborBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(excluirSaborBtn)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,14 +102,18 @@ public class FormularioSabores extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoPizzaSaborCbbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(inserirSaborBtn)
+                    .addComponent(atualizarSaborBtn)
+                    .addComponent(excluirSaborBtn))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton atualizarSaborBtn;
+    private javax.swing.JButton excluirSaborBtn;
+    private javax.swing.JButton inserirSaborBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -103,4 +121,73 @@ public class FormularioSabores extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> saborCbbox;
     private javax.swing.JComboBox<String> tipoPizzaSaborCbbox;
     // End of variables declaration//GEN-END:variables
+
+    //alimenta a lista de sabores disponiveis na variavel global auxiliar e combobox
+    public void setSaboresList(List<Sabor> sabores){
+        saboresList = sabores;
+        saborCbbox.removeAllItems();
+        for(Sabor sabor:sabores){
+            saborCbbox.addItem(sabor.getNome());
+        }
+    }
+    
+    //alimenta a lista de tipos de pizza disponiveis na variavel global auxiliar e combobox
+    public void setTiposPizzaList(List<TipoPizza> tipos){
+        tiposPizzaList = tipos;
+        tipoPizzaSaborCbbox.removeAllItems();
+        for(TipoPizza tipo:tipos){
+            tipoPizzaSaborCbbox.addItem(tipo.getNome());
+        }
+    }
+    
+    //retorna toda a lista de sabores do combobox
+    public List<Sabor> getSaboresList(){
+        return saboresList;
+    }
+    
+    //remove o tipo de pizza do combobox
+    public Sabor removeSaboresCbbox(int id){
+        for(Sabor sabor:saboresList){
+            int index = 0;
+            if(sabor.getId() == id){
+                saborCbbox.remove(index);
+                return sabor;
+            }
+            index++;
+        }
+        return null;
+    }
+    
+    //add o sabor no combobox
+    public void addTipoPizzaCbbox(Sabor sabor){
+        saboresList.add(sabor);
+        saborCbbox.addItem(sabor.getNome());
+    }
+    
+    //retorna os campos preenchidos na forma de objeto
+    public Sabor getSaborFormulario(){
+        
+        String nome = nomeSaborTxt.getText();
+        TipoPizza tipo = null;
+       
+        for(int i=0; i<tiposPizzaList.size(); i++){
+            if(i == tipoPizzaSaborCbbox.getSelectedIndex()){
+                tipo = tiposPizzaList.get(i);
+                break;
+            }
+        }
+        
+        if(nome.isBlank() || tipo == null){
+            return null;
+        }
+        
+        Sabor sabor = new Sabor();
+        sabor.setId(0);
+        sabor.setNome(nome);
+        sabor.setTipo(tipo);
+        
+        return sabor;
+    }
+
+
 }
