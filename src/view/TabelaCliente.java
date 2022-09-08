@@ -63,7 +63,7 @@ public class TabelaCliente extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -103,7 +103,7 @@ public class TabelaCliente extends javax.swing.JPanel {
         modeloTabelaCliente.setListaClientes(lista);
     }
     
-    public List<Cliente> getContatosParaExcluirDaTabela() {
+    public List<Cliente> getClientesParaExcluirDaTabela() {
         int[] linhasSelecionadas = this.getTabelaContato().getSelectedRows();
         List<Cliente> listaExcluir = new ArrayList();
         for (int i = 0; i < linhasSelecionadas.length; i++) {
@@ -113,7 +113,7 @@ public class TabelaCliente extends javax.swing.JPanel {
         return listaExcluir;
     }
     
-    public void excluirContatosDaTabela(List<Cliente> listaParaExcluir) {
+    public void excluirClientesDaTabela(List<Cliente> listaParaExcluir) {
         modeloTabelaCliente.removeClientes(listaParaExcluir);
     }
 

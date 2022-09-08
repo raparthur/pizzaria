@@ -32,7 +32,7 @@ public class ClienteController {
             view.apresentaInfo("formulário não preenchido");
         } else {
             //apenas add na tabela, falta o dao, id=0 default,substituir o id pelo forcenido pelo dao
-            view.adicionaClienteTabela(cliente);
+            view.adicionaClienteTabela(cliente); //deixar aqui
         }
     }
     
@@ -65,11 +65,11 @@ public class ClienteController {
     }
     
     public void excluirClientes(){
-        List<Cliente> clientes = view.getContatosParaExcluir();
+        List<Cliente> clientes = view.getClientesParaExcluir();
         for(Cliente c: clientes){
             System.out.println("nome:"+c.getNome());
         }
-        view.excluirContatosTabela(clientes);
+        view.excluirClientesTabela(clientes);
     }
 
     public void pesquisarClientes(String termo) {
